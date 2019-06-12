@@ -1,20 +1,22 @@
 const addTimer = function() {
-    const timerHour = document.getElementById("timerHour");
-    const timerMinute = document.getElementById("timerMinute");
-    const timerSecond = document.getElementById("timerSecond");
-    const endTimer = false;
+    let timerHour = document.getElementById("timerHour");
+    let timerMinute = document.getElementById("timerMinute");
+    let timerSecond = document.getElementById("timerSecond");
+    let endTimer = false;
     
-    if (timerSecond > 0) {
-        timerSecond.textContent -= 1;
+    if ( timerSecond > 0) {
+        timerSecond.textContent --;
+    } else {
+        timerSecond.textContent = 59;
+        if (timerMinute > 0) {
+            timerMinute.textContent --;
         } else {
-            timerSecond = 59;
-
-            if (timerMinute > 0) timerMinute.textContent -= 1;
-            else {
-                timerMinute = 59;
-
-                if (timerHour > 0) timerHour.textContent -= 1;
-                else end = true;
+            timerMinute.textContent = 59;
+            if (timerHour > 0) {
+                timerHour.textContent --;
+            } else {
+                endTimer = true;
+            }
         }
     }
 }

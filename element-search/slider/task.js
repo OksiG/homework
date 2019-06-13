@@ -3,7 +3,7 @@ const next = document.querySelector('.slider__arrow_next');
 const sliders = document.querySelectorAll('.slider__item');
 
 prev.onclick = function() {
-    for (let i = sliders.length; i < sliders.length; i--) {
+    for (let i = sliders.length - 1; i < sliders.length; i--) {
         if (sliders[i].classList.contains( 'slider__item_active' )) {
             sliders[i].classList.remove( 'slider__item_active' );
             if (i === 0) {

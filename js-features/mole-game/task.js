@@ -12,16 +12,16 @@ for (let index = 1; index < 9; index++) {
             dead.textContent ++; 
             if (dead.textContent >= 10) {
                 alert('Победа!');
-                dead.textContent === 0;
-                lost.textContent === 0;
+                dead.textContent = 0;
+                lost.textContent = 0;
                 return;
             } 
         } else {
             lost.textContent ++;
             if (lost.textContent >= 5) {
                 alert('Вы проиграли!');
-                dead.textContent === 0;
-                lost.textContent === 0;
+                dead.textContent = 0;
+                lost.textContent = 0;
                 return;
             } 
         }

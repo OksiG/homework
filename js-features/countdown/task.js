@@ -1,11 +1,11 @@
-const addTimer = function() {
-    let timerHour = document.getElementById("timerHour");
-    let timerMinute = document.getElementById("timerMinute");
-    let timerSecond = document.getElementById("timerSecond");
-    let endTimer = false;
-    
+let timerHour = document.getElementById("timerHour");
+let timerMinute = document.getElementById("timerMinute");
+let timerSecond = document.getElementById("timerSecond");
+let endTimer = false;
+
+const addTimer = function() {    
     if ( timerSecond > 0) {
-        timerSecond.textContent --;
+    timerSecond.textContent --;
     } else {
         timerSecond.textContent = 59;
         if (timerMinute > 0) {

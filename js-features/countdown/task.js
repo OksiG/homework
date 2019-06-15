@@ -15,19 +15,23 @@ const addTimer = function() {
             if (timerHour > 0) {
                 timerHour.textContent --;
             } else {
-                endTimer = true;
+                endTimer = true;    
             }
         }
     }
+
+    if (endTimer) {
+        clearInterval(intervalID);
+        alert("Вы победили в конкурсе!");
+    } else {
+        document.getElementById("timerHour") = timerHour;
+        document.getElementById("timerMinute") = timerMinute;
+        document.getElementById("timerSecond") = timerSecond;
+    }       
 }
 
-if (endTimer) {
-    clearInterval(intervalID);
-    alert("Вы победили в конкурсе!");
-} else {
-    document.getElementById("timerHour") = timerHour;
-    document.getElementById("timerMinute") = timerMinute;
-    document.getElementById("timerSecond") = timerSecond;
-}
+
 
 window.intervalID = setInterval(addTimer, 1000);
+
+

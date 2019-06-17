@@ -17,12 +17,14 @@ class Game {
   }
 
   registerEvents() {
+    let objectGame = this;
+
     function getChar(e) {
       if (e.which != 0 && e.charCode != 0) {
-        if (String.fromCharCode(e.which).toLowerCase() == this.currentSymbol.textContent.toLowerCase()) {
-          this.success();
+        if (String.fromCharCode(e.which).toLowerCase() == objectGame.currentSymbol.textContent.toLowerCase()) {
+          objectGame.success();
         } else {
-          this.fail();
+          objectGame.fail();
         }
       } 
     } 

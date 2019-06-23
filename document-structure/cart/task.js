@@ -2,38 +2,37 @@ const quantity = document.getElementsByClassName('product__quantity-control');
 const addProduct = document.getElementsByClassName('product__add');
 let quantityCurrent = document.getElementsByClassName('product__quantity-value');
 
-
-function changeQuantity () {
-    for (let i = 0; i < quantityCurrent.length; i++) { 
-
-        if (quantity.classList.contains('product__quantity-control_dec') && quantityCurrent[i] > 1) {
-            quantityCurrent[i]--;
-        } else {
-            quantityCurrent[i]++;
-        }
-    }
-}
-
 for (let i = 0; i < quantity.length; i++) {
-    quantity[i].addEventListener('click', changeQuantity);
+    quantity[i].addEventListener('click', function () {
+        for (let j = 0; j < quantityCurrent.length; j++) {
+            if (quantity[i].classList.contains('product__quantity-control_dec') && quantityCurrent[j].innerText > 1) {
+                quantityCurrent[j].innerText--;
+            } else {
+                quantityCurrent[j].innerText++;
+            }
+        }
+    });
 }
+
+let product = document.querySelectorAll('.product');
+
+const cart = document.querySelector('.cart__products');
 
 for (let i = 0; i < addProduct.length; i++) {
     addProduct[i].addEventListener('click', function() {
-        let product = document.querySelector('.product');
-        let id = product.dataset.id;
-        let img = product.querySelector('img').getAttribute('src');
-        const cart = document.querySelector('.cart__products');
+        if (cart.value != null) {
+            alert('не пусто')
 
-        if (cart != null)
-
-        cart.innerHTML += `
-        <div class="cart__product" data-id="${id}">
-            <img class="cart__product-image" src="${img}">
-            <div class="cart__product-count">${quantityCurrent}</div>
-        </div>          
-        `;
-
-
+        } else {
+            for (let j = 0; j < product.length; j++) {        
+                cart.insertAdjacentHTML('afterBegin', `
+                <div class="cart__product" data-id="${product[j].dataset.id}">
+                <img class="cart__product-image" src="${product[j].querySelector('img').getAttribute('src')}">
+                <div class="cart__product-count">${quantityCurrent[j]}</div>
+                </div>          
+                `);
+            }
+        }
     });
 }
+

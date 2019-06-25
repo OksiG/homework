@@ -4,13 +4,12 @@ let quantityCurrent = document.getElementsByClassName('product__quantity-value')
 
 for (let i = 0; i < quantity.length; i++) {
     quantity[i].addEventListener('click', function () {
-        for (let j = 0; j < quantityCurrent.length; j++) {
-            if (quantity[i].classList.contains('product__quantity-control_dec') && quantityCurrent[j].innerText > 1) {
-                quantityCurrent[j].innerText--;
-            } else {
-                quantityCurrent[j].innerText++;
-            }
+        if (quantity[i].classList.contains('product__quantity-control_dec') && quantity[i].nextElementSibling.innerText > 0) {
+            quantity[i].nextElementSibling.innerText--;
+        } else {
+            quantity[i].previousElementSibling.innerText++;
         }
+        
     });
 }
 
@@ -21,7 +20,7 @@ const cart = document.querySelector('.cart__products');
 for (let i = 0; i < addProduct.length; i++) {
     addProduct[i].addEventListener('click', function() {
         if (cart.value != null) {
-            alert('не пусто')
+            alert('не пусто');
 
         } else {
             for (let j = 0; j < product.length; j++) {        

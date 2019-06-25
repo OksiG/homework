@@ -23,5 +23,7 @@ function changeSpeed () {
     return timeChange = speed[i].dataset.speed;
 }
 
-setInterval(changeTexts, changeSpeed);
-
+setTimeout (function run() {
+    changeTexts();
+    setTimeout(run, changeSpeed);
+}, changeSpeed)

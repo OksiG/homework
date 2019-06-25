@@ -3,8 +3,12 @@ let inputTask = document.getElementById('task__input');
 let addTask = document.getElementById('tasks__add');
 
 function addedTask(e) {
+    if ((this === inputTask) && (e.keyCode != 13)) {
+        return;
+    }
+
     if (inputTask.value != '') {
-        newTask.insertAdjacentElement('afterBegin', 
+        newTask.insertAdjacentHTML('afterBegin', 
             `<div class="task">
                 <div class="task__title">
                 ${inputTask.value}
@@ -17,5 +21,4 @@ function addedTask(e) {
     }
 }
 
-inputTask.addEventListener('keypress', addedTask);
 addTask.addEventListener('click', addedTask);

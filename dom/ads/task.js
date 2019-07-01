@@ -1,6 +1,6 @@
 const texts = document.getElementsByClassName('rotator__case');
 let i = 0;
-let timeChange = 0;
+
 
 function getI () {
     if (i === (texts.length - 1)) {
@@ -20,7 +20,7 @@ function changeTexts () {
 
 function changeSpeed () {
     getI();
-    return timeChange = speed[i].dataset.speed;
+    return texts[i].dataset.speed;
 }
 
 setTimeout (function run() {

@@ -14,23 +14,22 @@ for (let i = 0; i < quantity.length; i++) {
 }
 
 let product = document.querySelectorAll('.product');
-
 const cart = document.querySelector('.cart__products');
+let quantityNow = document.getElementsByClassName('cart__product-count');
 
 for (let i = 0; i < addProduct.length; i++) {
     addProduct[i].addEventListener('click', function() {
         if (cart.value != null) {
-            alert('не пусто');
-
-        } else {
-            for (let j = 0; j < product.length; j++) {        
-                cart.insertAdjacentHTML('afterBegin', `
-                <div class="cart__product" data-id="${product[j].dataset.id}">
-                <img class="cart__product-image" src="${product[j].querySelector('img').getAttribute('src')}">
-                <div class="cart__product-count">${quantityCurrent[j]}</div>
-                </div>          
-                `);
+            if (product[i].dataset.id === (i + 1)) {            
+            quantityNow[i].innerText = quantityNow[i].innerText + quantityCurrent[i].innerText;
             }
+        } else {                   
+            cart.insertAdjacentHTML('afterBegin', `
+            <div class="cart__product" data-id="${product[i].dataset.id}">
+                <img class="cart__product-image" src="${product[i].querySelector('img').getAttribute('src')}">
+                <div class="cart__product-count">${quantityCurrent[i].innerText}</div>
+            </div>        
+            `);            
         }
     });
 }

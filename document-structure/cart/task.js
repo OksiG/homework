@@ -19,8 +19,8 @@ let quantityNow = document.getElementsByClassName('cart__product-count');
 
 for (let i = 0; i < addProduct.length; i++) {
     addProduct[i].addEventListener('click', function() {
-        if (cart.value != null) {
-            if (product[i].dataset.id === (i + 1)) {            
+        if (cart.children[i] !== undefined) {
+            if (cart.children[i].dataset.id == (i + 1)) {            
             quantityNow[i].innerText = quantityNow[i].innerText + quantityCurrent[i].innerText;
             }
         } else {                   

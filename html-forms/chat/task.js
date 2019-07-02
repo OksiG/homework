@@ -30,7 +30,7 @@ function sendMessageBot() {
 }
 
 
-function sendMessageClient(e) {
+let sendMessageClient = (e) => {
     if (e.keyCode == 13 && input.value != '') {
         e.preventDefault();
         let realDate = new Date();
@@ -45,7 +45,7 @@ function sendMessageClient(e) {
         sendMessageBot();
         return false; 
     }
-}
+};
 
 input.addEventListener('keypress', sendMessageClient(e));
 

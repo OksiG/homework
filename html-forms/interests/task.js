@@ -1,16 +1,30 @@
-const checkBox = document.querySelectorAll('.interests_main > ul > li');
-const parentBox = [];
-const childrenBox = [];
+const checkBoxes = document.querySelectorAll('.interest');
 
-for (let i = 0; i < checkBox.length; i++) {
-    parentBox.push(checkBox[i].querySelector('.interest__check'));
-}
-
-for (let i = 0; i < checkBox.length; i++) {
-    childrenBox.push(checkBox[i].querySelectorAll('ul.interests > li'));
-}
-
-for (let i = 0; i < childrenBox; i++) {
-    childrenBox[i].checked = parentBox[i].checked;
+for (let i = 0; i < checkBoxes.length; i++) {
+    checkBoxes[i].addEventListener('change', function() {
+        let parentLi = event.currentTarget;
+        let parentCheckbox = parentLi.querySelector('.interest__check');
+        let childCheckboxes = parentLi.querySelectorAll('.interest__check');
+            
+        if (event.target === parentCheckbox) {
+            for (let j = 0; j < childCheckboxes.length; j++) {
+                childCheckboxes[j].checked = parentCheckbox.checked;                
+            }
+        }
+ 
+        else { 
+            let checkedChilds = event.target.closest('ul').querySelectorAll('.interest__check:checked');    
+            if (checkedChilds.length === 0) {
+                parentCheckbox.checked = false;
+                parentCheckbox.indeterminate = false;                        
+            }
+            else if  (checkedChilds.length === childCheckboxes.length - 1) {
+                parentCheckbox.checked = true;  
+                parentCheckbox.indeterminate = false;                                  
+            }
+            else {
+                parentCheckbox.indeterminate = true;
+            }
+        }
     });
 }

@@ -19,10 +19,10 @@ let quantityNow = document.getElementsByClassName('cart__product-count');
 
 for (let i = 0; i < addProduct.length; i++) {
     addProduct[i].addEventListener('click', function() {
-        if (cart.children[i] !== undefined) {
+        if (cart.children[i] != null) {   
             if (cart.children[i].dataset.id == product[i].dataset.id) {            
-            quantityNow[i].innerText = quantityNow[i].innerText + quantityCurrent[i].innerText;
-            }
+                quantityNow[i].innerText = Number(quantityNow[i].innerText) + Number(quantityCurrent[i].innerText);
+                }
         } else {                   
             cart.insertAdjacentHTML('afterBegin', `
             <div class="cart__product" data-id="${product[i].dataset.id}">
@@ -34,3 +34,8 @@ for (let i = 0; i < addProduct.length; i++) {
     });
 }
 
+
+//if (cart.children[i] !== undefined) {   
+//    if (cart.children[i].dataset.id == product[i].dataset.id) {            
+//    quantityNow[i].innerText = Number(quantityNow[i].innerText) + Number(quantityCurrent[i].innerText);
+//    }

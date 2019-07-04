@@ -7,7 +7,7 @@ request.addEventListener('readystatechange', function() {
     if (request.readyState == request.DONE && request.status == 200) {
         loader.classList.remove('loader_active');
 
-        let data = JSON.parse(request.responseText);
+        let data = JSON.parse(request.responseText).data;
         
         for (let key in data) {
             let valute = `<div class="item">

@@ -19,11 +19,11 @@ for (let i = 0; i < checkBoxes.length; i++) {
                 parentCheckbox.indeterminate = false;                        
             }
             else if  (checkedChilds.length === childCheckboxes.length - 1) {
-                parentCheckbox.checked = true;  
+                parentCheckbox.checked = false;  
                 parentCheckbox.indeterminate = false;                                  
             }
             else {
-                parentCheckbox.indeterminate = true;
+                parentCheckbox.indeterminate = false;
             }
         }
     });

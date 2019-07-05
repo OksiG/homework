@@ -36,6 +36,7 @@ let sendMessageClient = (e) => {
         `;
         realDate.value = '';
         sendMessageBot();
+        input.value = '';
         return false; 
     }
 };

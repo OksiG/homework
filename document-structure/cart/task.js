@@ -13,29 +13,32 @@ for (let i = 0; i < quantity.length; i++) {
     });
 }
 
-let product = document.querySelectorAll('.product');
+
 const cart = document.querySelector('.cart__products');
-let quantityNow = document.getElementsByClassName('cart__product-count');
+
 
 for (let i = 0; i < addProduct.length; i++) {
-    addProduct[i].addEventListener('click', function() {
-        if (cart.children[i] != null) {   
-            if (cart.children[i].dataset.id == product[i].dataset.id) {            
-                quantityNow[i].innerText = Number(quantityNow[i].innerText) + Number(quantityCurrent[i].innerText);
-                }
-        } else {                   
-            cart.insertAdjacentHTML('afterBegin', `
-            <div class="cart__product" data-id="${product[i].dataset.id}">
-                <img class="cart__product-image" src="${product[i].querySelector('img').getAttribute('src')}">
-                <div class="cart__product-count">${quantityCurrent[i].innerText}</div>
-            </div>        
-            `);            
+    addProduct[i].addEventListener('click', function(e) {
+        const product = e.target.closest('.product');
+        const id = product.dataset.id;
+        const countFromProduct = +event.target.parentNode.querySelector('.product__quantity-value').innerText;
+
+        for (let item of cart.children) {
+
+            if (item.dataset.id === id) {
+                let quantityNow = item.querySelector('.cart__product-count');
+                let total = +quantityNow.innerText;
+                quantityNow.innerText = total + countFromProduct;
+
+                return false;
+            }
         }
+
+        cart.insertAdjacentHTML('beforeend', `
+            <div class="cart__product" data-id="${id}">
+                <img class="cart__product-image" src="${product.querySelector('img').getAttribute('src')}">
+                <div class="cart__product-count">${product.querySelector('.product__quantity-value').innerText}</div>
+            </div>        
+            `);   
     });
 }
-
-
-//if (cart.children[i] !== undefined) {   
-//    if (cart.children[i].dataset.id == product[i].dataset.id) {            
-//    quantityNow[i].innerText = Number(quantityNow[i].innerText) + Number(quantityCurrent[i].innerText);
-//    }

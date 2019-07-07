@@ -24,13 +24,17 @@ for (let i = 0; i < addProduct.length; i++) {
         const countFromProduct = +event.target.parentNode.querySelector('.product__quantity-value').innerText;
 
         for (let item of cart.children) {
-
-            if (item.dataset.id === id) {
-                let quantityNow = item.querySelector('.cart__product-count');
-                let total = +quantityNow.innerText;
-                quantityNow.innerText = total + countFromProduct;
-
-                return false;
+            if (countFromProduct === 0) {
+                return;
+            } else {
+                if (item.dataset.id === id) {                
+            
+                    let quantityNow = item.querySelector('.cart__product-count');
+                    let total = +quantityNow.innerText;
+                    quantityNow.innerText = total + countFromProduct;
+        
+                    return false;
+                }                 
             }
         }
 

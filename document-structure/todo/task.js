@@ -18,12 +18,14 @@ function addedTask(e) {
         inputTask.value = '';
         e.preventDefault();
         return false;
+    } else {
+        e.preventDefault();
     }
 
     let remove = document.querySelector('.task__remove');
-    remove.addEventListener('click', function() {
+    remove.addEventListener('click', function(event) {
+        let removeTask = event.target.querySelector('.task__remove');
         newTask.remove();
-        e.preventDefault();
     });
 }
 

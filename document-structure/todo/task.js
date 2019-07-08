@@ -23,9 +23,9 @@ function addedTask(e) {
     }
 
     let remove = document.querySelector('.task__remove');
-    remove.addEventListener('click', function(event) {
-        let removeTask = event.target.querySelector('.task__remove');
+    remove.addEventListener('click', function() {
         newTask.remove();
+        e.preventDefault();
     });
 }
 

@@ -26,7 +26,7 @@ window.addEventListener('load', function(e) {
 });
   
 closeModalMain[0].onclick = function(e) {
-    event.preventDefault();
+    e.preventDefault();
     document.cookie = 'isClosed=true';
     modalMain.classList.remove("modal_active");
 }

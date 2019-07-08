@@ -4,7 +4,7 @@ let quantityCurrent = document.getElementsByClassName('product__quantity-value')
 
 for (let i = 0; i < quantity.length; i++) {
     quantity[i].addEventListener('click', function () {
-        if (quantity[i].classList.contains('product__quantity-control_dec') && quantity[i].nextElementSibling.innerText > 0) {
+        if (quantity[i].classList.contains('product__quantity-control_dec') && quantity[i].nextElementSibling.innerText > 1) {
             quantity[i].nextElementSibling.innerText--;
         } else {
             quantity[i].previousElementSibling.innerText++;
@@ -24,18 +24,16 @@ for (let i = 0; i < addProduct.length; i++) {
         const countFromProduct = +event.target.parentNode.querySelector('.product__quantity-value').innerText;
 
         for (let item of cart.children) {
-            if (countFromProduct === 0) {
-                return;
-            } else {
-                if (item.dataset.id === id) {                
             
-                    let quantityNow = item.querySelector('.cart__product-count');
-                    let total = +quantityNow.innerText;
-                    quantityNow.innerText = total + countFromProduct;
+            if (item.dataset.id === id) {                
+            
+                let quantityNow = item.querySelector('.cart__product-count');
+                let total = +quantityNow.innerText;
+                quantityNow.innerText = total + countFromProduct;
         
-                    return false;
-                }                 
-            }
+                return false;
+            }                 
+            
         }
 
         cart.insertAdjacentHTML('beforeend', `

@@ -1,13 +1,6 @@
 const modalMain = document.getElementById("subscribe-modal");
 const closeModalMain = modalMain.getElementsByClassName("modal__close");
 
-modalMain.classList.add("modal_active");
-
-closeModalMain[0].onclick = function() {
-    modalMain.classList.remove("modal_active");
-    modalMain.classList.add("modal__close");
-}
-
 const getCookie = (name) => {
     const value = "; " + document.cookie;
     let parts = value.split("; " + name + "=");
@@ -18,16 +11,15 @@ const getCookie = (name) => {
     .shift();
     }
 }
-
-window.addEventListener('load', function(e) {
-    if (!getCookie('isClosed')) {
-        modalMain.classList.add('modal_active');
-    }
-});
-  
+ 
 closeModalMain[0].onclick = function(e) {
     e.preventDefault();
     document.cookie = 'isClosed=true';
     modalMain.classList.remove("modal_active");
 }
 
+window.addEventListener('load', function(e) {
+    if (!getCookie('isClosed')) {
+        modalMain.classList.add('modal_active');
+    }
+});

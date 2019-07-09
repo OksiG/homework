@@ -1,10 +1,11 @@
 const editor = document.getElementById('editor');
-let text = editor.value;
 
 editor.addEventListener('input', function (e) {    
-    localStorage.setItem('saveText', `${text}`);
+    localStorage.setItem('saveText', editor.value);
 });
 
 window.addEventListener('load', function (e) {
-    text = localStorage.getItem('saveText');
+    if (localStorage.saveText) {
+        editor.value = localStorage.getItem('saveText');
+    }
 });

@@ -22,11 +22,16 @@ function addedTask(e) {
         e.preventDefault();
     }
 
-    let remove = document.querySelector('.task__remove');
-    remove.addEventListener('click', function() {
-        newTask.remove();
-        e.preventDefault();
-    });
+    let remove = document.querySelectorAll('.task__remove');
+    let task = document.querySelectorAll('.task');
+
+    for (let i = 0; i < remove.length; i++) {
+        remove[i].addEventListener('click', function(e) {
+            e.preventDefault();
+            task[i].remove();
+        });
+    }
+    
 }
 
 addTask.addEventListener('click', addedTask);

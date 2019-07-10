@@ -17,21 +17,20 @@ function addedTask(e) {
             </div>`);
         inputTask.value = '';
         e.preventDefault();
+
+        let remove = document.querySelector('.task__remove');
+        let task = document.querySelector('.task');
+    
+        
+        remove.addEventListener('click', function(e) {
+            e.preventDefault();
+            task.remove();
+        });
+
         return false;
     } else {
         e.preventDefault();
-    }
-
-    let remove = document.querySelectorAll('.task__remove');
-    let task = document.querySelectorAll('.task');
-
-    for (let i = 0; i < remove.length; i++) {
-        remove[i].addEventListener('click', function(e) {
-            e.preventDefault();
-            task[i].remove();
-        });
-    }
-    
+    } 
 }
 
 addTask.addEventListener('click', addedTask);
